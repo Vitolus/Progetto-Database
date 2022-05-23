@@ -57,15 +57,15 @@ CREATE TABLE Ordine(
     utente character varying(50) NOT NULL
 );
 
-DROP TYPE IF EXISTS mat;
-CREATE TYPE mat AS ENUM ('polimeri', 'metallo', 'legno');
+DROP TYPE IF EXISTS material;
+CREATE TYPE material AS ENUM ('polimeri', 'metallo', 'legno');
 CREATE TABLE Accessorio(
     ID SERIAL PRIMARY KEY,
     nome character varying(50) NOT NULL,
     tipo character varying(50) NOT NULL,
     prezzo real NOT NULL,
     colore character varying(20),
-    materiale mat,
+    materiale mataterial,
     tema character varying(30)
 );
 
@@ -101,11 +101,11 @@ CREATE TABLE OrdineT(
     data date NOT NULL
 );
 
-DROP TYPE IF EXISTS stazza;
-CREATE TYPE stazza AS ENUM ('media', 'piccola');
+DROP TYPE IF EXISTS tagli;
+CREATE TYPE tagli AS ENUM ('media', 'piccola');
 CREATE TABLE Razza(
     nome character varying(50) PRIMARY KEY,
-    taglia stazza NOT NULL,
+    taglia tagli NOT NULL,
     lingua character varying(50) NOT NULL
 );
 
@@ -115,10 +115,10 @@ CREATE TABLE Descrizione(
     data date NOT NULL
 );
 
-DROP TYPE ID EXISTS spec;
-CREATE TYPE spec AS ENUM ('marziale', 'arcana', 'divina');
-DROP TYPE ID EXISTS car;
-CREATE TYPE car AS ENUM ('forza', 'destrezza', 'intelligenza', 'saggezza', 'carisma');
+DROP TYPE ID EXISTS origin;
+CREATE TYPE origin AS ENUM ('marziale', 'arcana', 'divina');
+DROP TYPE ID EXISTS attribut;
+CREATE TYPE attribut AS ENUM ('forza', 'destrezza', 'intelligenza', 'saggezza', 'carisma');
 CREATE TABLE Classe(
     nome character varying(50) PRIMARY KEY,
     origine spec NOT NULL,
