@@ -44,8 +44,8 @@ CREATE TABLE Carta_di_credito(
 );
 
 CREATE TABLE Possesso(
-    utente character varying(50) NOT NULL,
-    carta character(16) NOT NULL
+    utente character varying(50),
+    carta character(16)
 );
 
 CREATE TABLE Ordine(
@@ -70,8 +70,8 @@ CREATE TABLE Accessorio(
 );
 
 CREATE TABLE OrdineA(
-    ordine integer NOT NULL,
-    accessorio integer NOT NULL
+    ordine integer,
+    accessorio integer
 );
 
 CREATE TABLE Regolamento(
@@ -89,12 +89,12 @@ CREATE TABLE Avventura(
 
 CREATE TABLE OrdineR(
     ordine SERIAL,
-    regolamento character varying(50) NOT NULL
+    regolamento character varying(50)
 );
 
 CREATE TABLE OrdineT(
     ordine SERIAL,
-    avventura character varying(50) NOT NULL
+    avventura character varying(50)
 );
 
 DROP TYPE IF EXISTS tagli;
@@ -106,8 +106,8 @@ CREATE TABLE Razza(
 );
 
 CREATE TABLE Descrizione(
-    razza character varying(50) NOT NULL,
-    avventura character varying(50) NOT NULL,
+    razza character varying(50),
+    avventura character varying(50)
 );
 
 DROP TYPE ID EXISTS origin;
@@ -121,8 +121,8 @@ CREATE TABLE Classe(
 );
 
 CREATE TABLE Regolazione(
-    classe character varying(50) NOT NULL,
-    regolamento character varying(50) NOT NULL,
+    classe character varying(50),
+    regolamento character varying(50)
 );
 
 DROP TYPE ID EXISTS scuol;
