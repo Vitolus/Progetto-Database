@@ -377,17 +377,72 @@ INSERT INTO Possesso(utente, carta) VALUES -- aggiungere tuple
 ('dav0@gmail.com','9876543210123456');
 
 INSERT INTO Ordine(ID, importo, dataPagamento, indirizzo, carta, utente) VALUES --completare tuple
-('1','29.99','2014-11-30','','','m4att@gmail.com',),
+('1','7.96','2014-11-30','','','m4att@gmail.com',),
 ('2','59.98','2014-11-30','2','9876543210123456','dav0@gmail.com'),
 ('3','29.99','2014-12-21','2','9876543210123456','dav0@gmail.com'),
-('4','89.97','2015-04-16','1','0123456789876543','kev@gmail.com'),
+('4','83.94','2015-04-16','1','0123456789876543','kev@gmail.com'),
 ('5','39.98','2016-08-26','','','imlis@gmail.com'),
 ('6','84.97','2016-11-30','','','ste@gmail.com'),
-('7','29.99','2017-04-19','','','m4att@gmail.com'),
+('7','15.99','2017-04-19','','','m4att@gmail.com'),
 ('8','149.95','2018-12-25','','','laura@gmail.com'),
 ('9','119.96','2020-09-22','2','9876543210123456','dav0@gmail.com'),
 ('10','89.97','2020-11-17','','','dany@gmail.com'),
 ('11','89.97','2021-12-08','','','m4att@gmail.com'),
 ('12','54.98','2021-12-25','1','0123456789876543','kev@gmail.com');
+
+INSERT INTO Accessorio(ID, nome, tipo, prezzo, colore, materiale, tema) VALUES
+('1','Pigment','dado','7.96','verde','polimeri',''),
+('2','Pigment','dado','7.96','rosso','polimeri',''),
+('3','Pigment','dado','7.96','giallo','polimeri',''),
+('4','Elder heart','dado','5.99','verde','polimeri',''),
+('5','Call of the corrupted','dado','7.96','bianco','polimeri',''),
+('6','Enlightenment','dado','20.84','chiaro','legno',''),
+('7','Battle for beyond','dado','23.96','scuro','legno',''),
+('8','Blacksmith','dado','30.55','bronzo','metallo',''),
+('9','Blacksmith','dado','30.55','oro','metallo',''),
+('10','Blacksmith','dado','30.55','argento','metallo',''),
+('11','Miniera di cristalli','mappa','12.99','','','miniera'),
+('12','Villaggio di Phandalver','mappa','15.99','','','villaggio'),
+('13','Cripta del lich','mappa','11.99','','','dungeon'),
+('14','Catacombe di sabbia','mappa','12.99','','','dungeon');
+
+INSERT INTO OrdineA(ordine, accessorio) VALUES
+('1','1'),
+('4','7'),
+('7','12');
+
+INSERT INTO  Regolamento(nome, dataPubblicazione, prezzo) VALUES
+(E'Player\'s Handbook','2014-08-19','29.99'),
+('Monster Manual','2014-09-30','29.99'),
+(E'Dungeon Master\'s Guide','2014-12-09','29.99'),
+(,E'Sword Coast Adventure\'s Guide','2015-11-3','29.99'),
+(E'Volo\'s Guide to Monsters','2016-11-15','29.99'),
+(E'Xanathar\'s Guide to Everything','2017-11-21','29.99'),
+(E'Mordenkainen\'s Tome of Foes','2018-05-29','29.99'),
+(E'Guildmasters\'s Guide to Ravnica','2018-11-20','29.99'),
+('Acquisitions Incorporated','2019-06-18','29.99'),
+('Eberron: Rising form the Last War','2019-11-19','29.99'),
+(E'Explorer\'s Guide to Wildemount','2020-03-17','29.99'),
+('Mythic Odysseys of Theros','2020-06-02','29.99'),
+(E'Tasha\'s Cauldron of Everything','2020-11-17','29.99'),
+(E'Van Richten\'s Guide to Ravenloft','2021-05-18','29.99'),
+(E'Fizban\'s Treasury of Dragons','2021-10-26','29.99'),
+('Strixhaven: A Curriculum of Chaos','2021-12-07','29.99');
+
+INSERT INTO  Avventura(nome, dataPubblicazione, prezzo, capitoli) VALUES
+('Hoard of the Dragon Queen','2014-08-19','19.99','8'),
+('Rise of Tiamat','2014-11-04','19.99','9'),
+('Princes of the Apocalypse','2015-04-07','24.99','7'),
+('Out of the Abyss','2015-09-15','29.99','17'),
+('Curse of Strahd','2016-03-15','24.99','15'),
+(E'Storn King\'s Thunder','2016-09-06','24.99','12'),
+('Tomb of Annihilation','2017-09-19','24.99','5'),
+('Waterdeep: Dragon Heist','2018-09-18','29.99','9'),
+('Waterdeep: Dungeon of the Mad Mage','2018-11-13','29.99','23'),
+('Ghosts of Saltmarsh','2019-05-21','29.99','8'),
+(E'Baldur\'s Gate: Descent Into Avernus','2019-09-18','29.99','5'),
+('Icewind Dale: Rime of the Frostmaiden','2020-09-15','29.99','7'),
+('Candlekeep Mysteries','2021-03-16','29.99','17'),
+('The Wild Beyond the Witchlight','2021-09-21','29.99','5');
 
 END;
