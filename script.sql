@@ -75,30 +75,26 @@ CREATE TABLE OrdineA(
 );
 
 CREATE TABLE Regolamento(
-    nome character varying(50),
+    nome character varying(50) PRIMARY KEY,
     dataPubblicazione date,
-    prezzo real NOT NULL,
-    PRIMARY KEY (nome, dataPubblicazione)
+    prezzo real NOT NULL
 );
 
 CREATE TABLE Avventura(
-    nome character varying(50),
+    nome character varying(50) PRIMARY KEY,
     dataPubblicazione date,
     prezzo real NOT NULL,
-    capitoli integer NOT NULL DEFAULT 1,
-    PRIMARY KEY (nome, dataPubblicazione)
+    capitoli integer NOT NULL DEFAULT 1
 );
 
 CREATE TABLE OrdineR(
     ordine SERIAL,
-    regolamento character varying(50) NOT NULL,
-    data date NOT NULL
+    regolamento character varying(50) NOT NULL
 );
 
 CREATE TABLE OrdineT(
     ordine SERIAL,
-    avventura character varying(50) NOT NULL,
-    data date NOT NULL
+    avventura character varying(50) NOT NULL
 );
 
 DROP TYPE IF EXISTS tagli;
@@ -232,15 +228,6 @@ ALTER TABLE IF EXISTS OrdineR
     ON DELETE NO ACTION
     NOT VALID;
 
-
-ALTER TABLE IF EXISTS OrdineR
-    ADD FOREIGN KEY (data)
-    REFERENCES Regolamento (dataPubblicazione) MATCH SIMPLE
-    ON UPDATE NO ACTION
-    ON DELETE NO ACTION
-    NOT VALID;
-
-
 ALTER TABLE IF EXISTS OrdineT
     ADD FOREIGN KEY (ordine)
     REFERENCES Ordine (ID) MATCH SIMPLE
@@ -255,15 +242,6 @@ ALTER TABLE IF EXISTS OrdineT
     ON UPDATE NO ACTION
     ON DELETE NO ACTION
     NOT VALID;
-
-
-ALTER TABLE IF EXISTS OrdineT
-    ADD FOREIGN KEY (data)
-    REFERENCES Avventura (dataPubblicazione) MATCH SIMPLE
-    ON UPDATE NO ACTION
-    ON DELETE NO ACTION
-    NOT VALID;
-
 
 ALTER TABLE IF EXISTS Descrizione
     ADD FOREIGN KEY (razza)
