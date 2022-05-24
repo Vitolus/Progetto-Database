@@ -352,4 +352,42 @@ ALTER TABLE IF EXISTS Personaggio
     ON DELETE NO ACTION
     NOT VALID;
 
+INSERT INTO Utente(mail, nome, cognome, password, telefono) VALUES
+('kev@gmail.com','Kevin','Gallo','password','0123456789'),
+('dav0@gmail.com','Davide','Bertolin','pessword','9876543210'),
+('and99@gmail.com','Andrea','Barozzi','pissword','7894561230'),
+('laura@gmail.com','Laura','Milanesi','possword','0321654987'),
+('ste@gmail.com','Stefano','Mura','pussword','7410852096'),
+('m4att@gmail.com','Matteo','Torre','teoPazzo' ,'7539518426'),
+('nanna@gmail.com','Anna','Battois','agnello'),
+('bea00@gmail.com','Beatrice','Lachin','traditrice'),
+('dany@gmail.com','Daniele','Vannuccini','agagag4'),
+('imlis@gmail.com','Lisa','De Grandis','NeVeR','1749800286');
+
+INSERT INTO Indirizzo(ID, utente, via, N_civico, CAP, citta, stato) VALUES --aggiungere tuple
+('1', 'kev@gmail.com','via Milano','45','30100','Mestre','Italy'),
+('2', 'dav0@gmail.com','via G. Favretto','40','30174','Zelarino','Italy');
+
+INSERT INTO Carta_di_credito(numero, circuito, scadenza, intestatario) VALUES --aggiungere tuple
+('0123456789876543','visa','2023-12-30','Kevin Gallo'),
+('9876543210123456','visa','2024-04-15','Davide Bertolin');
+
+INSERT INTO Possesso(utente, carta) VALUES -- aggiungere tuple
+('kev@gmail.com','0123456789876543'),
+('dav0@gmail.com','9876543210123456');
+
+INSERT INTO Ordine(ID, importo, dataPagamento, indirizzo, carta, utente) VALUES --completare tuple
+('1','29.99','2014-11-30','','','m4att@gmail.com',),
+('2','59.98','2014-11-30','2','9876543210123456','dav0@gmail.com'),
+('3','29.99','2014-12-21','2','9876543210123456','dav0@gmail.com'),
+('4','89.97','2015-04-16','1','0123456789876543','kev@gmail.com'),
+('5','39.98','2016-08-26','','','imlis@gmail.com'),
+('6','84.97','2016-11-30','','','ste@gmail.com'),
+('7','29.99','2017-04-19','','','m4att@gmail.com'),
+('8','149.95','2018-12-25','','','laura@gmail.com'),
+('9','119.96','2020-09-22','2','9876543210123456','dav0@gmail.com'),
+('10','89.97','2020-11-17','','','dany@gmail.com'),
+('11','89.97','2021-12-08','','','m4att@gmail.com'),
+('12','54.98','2021-12-25','1','0123456789876543','kev@gmail.com');
+
 END;
