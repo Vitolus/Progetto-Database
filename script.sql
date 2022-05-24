@@ -139,7 +139,7 @@ CREATE TABLE Magia(
 );
 
 CREATE TABLE Personaggio(
-    "ID" SERIAL PRIMARY KEY,
+    ID SERIAL PRIMARY KEY,
     nome character varying(50) NOT NULL,
     livello integer NOT NULL DEFAULT 1,
     razza character varying(50) NOT NULL,
@@ -873,5 +873,29 @@ INSERT INTO Magia(classe, incantesimo) VALUES
 ('Meteor Swar,','Wizard'),
 ('True Resurrection','Druid'),
 ('True Resurrection','Cleric');
+
+INSERT INTO Personaggi(ID, nome, livello ,razza, classe, utente) VALUES
+('1','Kyvir','9','Tiefling','Sorcerer','dav0@gmail.com'),
+('2','Urogar','9','Dragonborn','Paladin','kev@gmail.com'),
+('3','Zondan Moonstar','20','Elf','Wizard','dav0@gmail.com'),
+('4','Zorath','6','Kalashtar','Warlock','and99@gmail.com'),
+('5','Kellan','10','Genasi','Sorcerer','laura@gmail.com'),
+('6','Krogar Melvinsson','5','Human','Sorcerer','nanna@gmail.com'),
+('7','Femhir Nedakh','6','Dhampir','Wizard','kev@gmail.com'),
+('8','Dalagh-Ciym','5','Dragonborn','Ranger','imlis@gmail.com'),
+('9',E'Aulico l\'Idraulico','1','Halfling','Paladin','dav0@gmail.com'),
+('10','Kenjiro','1','Reborn','Sorcerer','dav0@gmail.com'),
+('11','Damakos','11','Tiefling','Warlock','m4att@gmail.com'),
+('12','Ethan Lefoy','11','Half-Elf','Druid','dany@gmail.com'),
+('13','Rihalla','11','Aasimar','Bard','imlis@gmail.com'),
+('14','Golden Lucky','7','Tabaxi','Fighter','laura@gmail.com'),
+('15','Kotaro','8','Reborn','Barbarian','kev@gmail.com'),
+('16','Raghot 2.0','7','Warforged','Artificer','dany@gmail.com'),
+('17','Rolzarz','8','Hobgoblin','Wizard','nanna@gmail.com'),
+('18','Rig','17','Kobold','Cleric','imlis@gmail.com'),
+('19','Sharazim','14','Shifter','Monk','dav0@gmail.com'),
+('20','Churro','18','Kenku','Rogue','m4att@gmail.com'),
+('21','NPC-MT','2','Warforged','Artificer','and99@gmail.com'),
+('22','Thorak','20','Dwarf','Cleric','dany@gmail.com');
 
 END;
