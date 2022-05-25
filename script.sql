@@ -64,9 +64,9 @@ CREATE TABLE Accessorio(
     nome character varying(50) NOT NULL,
     tipo character varying(50) NOT NULL,
     prezzo real NOT NULL,
-    colore character varying(20),
-    materiale mataterial,
-    tema character varying(30)
+    colore character varying(20) DEFAULT NULL,
+    materiale material DEFAULT NULL,
+    tema character varying(30) DEFAULT NULL
 );
 
 CREATE TABLE OrdineA(
@@ -110,14 +110,14 @@ CREATE TABLE Descrizione(
     avventura character varying(50)
 );
 
-DROP TYPE ID EXISTS origin;
+DROP TYPE IF EXISTS origin;
 CREATE TYPE origin AS ENUM ('marziale', 'arcana', 'divina');
-DROP TYPE ID EXISTS attribut;
+DROP TYPE IF EXISTS attribut;
 CREATE TYPE attribut AS ENUM ('forza', 'destrezza', 'intelligenza', 'saggezza', 'carisma');
 CREATE TABLE Classe(
     nome character varying(50) PRIMARY KEY,
-    origine spec NOT NULL,
-    attributo car NOT NULL
+    origine origin NOT NULL,
+    attributo attribut NOT NULL
 );
 
 CREATE TABLE Regolazione(
@@ -125,8 +125,8 @@ CREATE TABLE Regolazione(
     regolamento character varying(50)
 );
 
-DROP TYPE ID EXISTS scuol;
-CREATE TYPE scuol AS ENUM ('abiurazione', 'ammaliamento', 'divinazione', 'evocazione', 'illusionee', 'invocazione', 'necromanzia', 'trasmutazione');
+DROP TYPE IF EXISTS scuol;
+CREATE TYPE scuol AS ENUM ('abiurazione', 'ammaliamento', 'divinazione', 'evocazione', 'illusione', 'invocazione', 'necromanzia', 'trasmutazione');
 CREATE TABLE Incantesimo(
     nome character varying(50) PRIMARY KEY,
     livello integer NOT NULL CHECK (livello <= 9) DEFAULT 0,
@@ -134,8 +134,8 @@ CREATE TABLE Incantesimo(
 );
 
 CREATE TABLE Magia(
-    classe character varying(50),
-    incantesimo character varying(50)
+    incantesimo character varying(50),
+	classe character varying(50)
 );
 
 CREATE TABLE Personaggio(
@@ -144,7 +144,7 @@ CREATE TABLE Personaggio(
     livello integer NOT NULL CHECK (livello <= 20) DEFAULT 1,
     razza character varying(50) NOT NULL,
     classe character varying(50) NOT NULL,
-    utente character varying(50) NOT NULL,
+    utente character varying(50) NOT NULL
 );
 
 ALTER TABLE IF EXISTS Indirizzo
@@ -359,7 +359,7 @@ INSERT INTO Possesso(utente, carta) VALUES
 ('imlis@gmail.com','1457895237965312');
 
 INSERT INTO Ordine(ID, importo, dataPagamento, indirizzo, carta, utente) VALUES
-('1','7.96','2014-11-30','6','3485433195387321','m4att@gmail.com',),
+('1','7.96','2014-11-30','6','3485433195387321','m4att@gmail.com'),
 ('2','59.98','2014-11-30','2','9876543210123456','dav0@gmail.com'),
 ('3','29.99','2014-12-21','2','9876543210123456','dav0@gmail.com'),
 ('4','83.94','2015-04-16','1','0123456789876543','kev@gmail.com'),
@@ -373,20 +373,20 @@ INSERT INTO Ordine(ID, importo, dataPagamento, indirizzo, carta, utente) VALUES
 ('12','54.98','2021-12-25','1','0123456789876543','kev@gmail.com');
 
 INSERT INTO Accessorio(ID, nome, tipo, prezzo, colore, materiale, tema) VALUES
-('1','Pigment','dado','7.96','verde','polimeri',''),
-('2','Pigment','dado','7.96','rosso','polimeri',''),
-('3','Pigment','dado','7.96','giallo','polimeri',''),
-('4','Elder heart','dado','5.99','verde','polimeri',''),
-('5','Call of the corrupted','dado','7.96','bianco','polimeri',''),
-('6','Enlightenment','dado','20.84','chiaro','legno',''),
-('7','Battle for beyond','dado','23.96','scuro','legno',''),
-('8','Blacksmith','dado','30.55','bronzo','metallo',''),
-('9','Blacksmith','dado','30.55','oro','metallo',''),
-('10','Blacksmith','dado','30.55','argento','metallo',''),
-('11','Miniera di cristalli','mappa','12.99','','','miniera'),
-('12','Villaggio di Phandalver','mappa','15.99','','','villaggio'),
-('13','Cripta del lich','mappa','11.99','','','dungeon'),
-('14','Catacombe di sabbia','mappa','12.99','','','dungeon');
+('1','Pigment','dado','7.96','verde','polimeri',NULL),
+('2','Pigment','dado','7.96','rosso','polimeri',NULL),
+('3','Pigment','dado','7.96','giallo','polimeri',NULL),
+('4','Elder heart','dado','5.99','verde','polimeri',NULL),
+('5','Call of the corrupted','dado','7.96','bianco','polimeri',NULL),
+('6','Enlightenment','dado','20.84','chiaro','legno',NULL),
+('7','Battle for beyond','dado','23.96','scuro','legno',NULL),
+('8','Blacksmith','dado','30.55','bronzo','metallo',NULL),
+('9','Blacksmith','dado','30.55','oro','metallo',NULL),
+('10','Blacksmith','dado','30.55','argento','metallo',NULL),
+('11','Miniera di cristalli','mappa','12.99',NULL,NULL,'miniera'),
+('12','Villaggio di Phandalver','mappa','15.99',NULL,NULL,'villaggio'),
+('13','Cripta del lich','mappa','11.99',NULL,NULL,'dungeon'),
+('14','Catacombe di sabbia','mappa','12.99',NULL,NULL,'dungeon');
 
 INSERT INTO OrdineA(ordine, accessorio) VALUES
 ('1','1'),
@@ -458,7 +458,7 @@ INSERT INTO OrdineT(ordine, avventura) VALUES
 ('10','Icewind Dale: Rime of the Frostmaiden'),
 ('12',E'Storn King\'s Thunder');
 
-INSERT INTO Razze(nome, taglia, lingua) VALUES
+INSERT INTO Razza(nome, taglia, lingua) VALUES
 ('Arakocra','media','primordiale'),
 ('Aasimar','media','celestiale'),
 ('Bugbear','media','goblin'),
@@ -539,7 +539,7 @@ INSERT INTO Descrizione(razza, avventura) VALUES
 ('Shifter','The Wild Beyond the Witchlight'),
 ('Shifter',E'Baldur\'s Gate: Descent Into Avernus'),
 ('Tabaxi','Tomb of Annihilation'),
-('Tiefling','E'Baldur\'s Gate: Descent Into Avernus'),
+('Tiefling',E'Baldur\'s Gate: Descent Into Avernus'),
 ('Triton','Ghosts of Saltmarsh'),
 ('Triton','Princes of the Apocalypse'),
 ('Warforged','Candlekeep Mysteries'),
@@ -550,7 +550,7 @@ INSERT INTO Classe(nome, origine, attributo) VALUES
 ('Barbarian','marziale','forza'),
 ('Bard','arcana','carisma'),
 ('Cleric','divina','saggezza'),
-('Druid','arcana','saggezzza'),
+('Druid','arcana','saggezza'),
 ('Fighter','marziale','forza'),
 ('Monk','marziale','destrezza'),
 ('Paladin','divina','forza'),
@@ -665,7 +665,7 @@ INSERT INTO Incantesimo(nome, livello, scuola) VALUES
 ('Meteor Swarm','9','evocazione'),
 ('True Resurrection','9','necromanzia');
 
-INSERT INTO Magia(classe, incantesimo) VALUES
+INSERT INTO Magia(incantesimo, classe) VALUES
 ('Booming Blade','Sorcerer'),
 ('Booming Blade','Warlock'),
 ('Booming Blade','Wizard'),
@@ -894,11 +894,11 @@ INSERT INTO Magia(classe, incantesimo) VALUES
 ('Gate','Sorcerer'),
 ('Gate','Wizard'),
 ('Meteor Swarm','Sorcerer'),
-('Meteor Swar,','Wizard'),
+('Meteor Swarm','Wizard'),
 ('True Resurrection','Druid'),
 ('True Resurrection','Cleric');
 
-INSERT INTO Personaggi(ID, nome, livello ,razza, classe, utente) VALUES
+INSERT INTO Personaggio(ID, nome, livello ,razza, classe, utente) VALUES
 ('1','Kyvir','9','Tiefling','Sorcerer','dav0@gmail.com'),
 ('2','Urogar','9','Dragonborn','Paladin','kev@gmail.com'),
 ('3','Zondan Moonstar','20','Elf','Wizard','dav0@gmail.com'),
