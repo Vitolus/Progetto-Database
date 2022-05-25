@@ -922,4 +922,9 @@ INSERT INTO Personaggio(ID, nome, livello ,razza, classe, utente) VALUES
 ('21','NPC-MT','2','Warforged','Artificer','and99@gmail.com'),
 ('22','Thorak','20','Dwarf','Cleric','dany@gmail.com');
 
+DROP INDEX IF EXISTS idx_Utente;
+CREATE INDEX idx_Utente ON Utente(mail);
+
+DROP INDEX IF EXISTS idx_Personaggio;
+CREATE INDEX idx_Personaggio ON Personaggio (id, razza, classe, utente);
 END;
