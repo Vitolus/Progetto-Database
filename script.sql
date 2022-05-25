@@ -317,35 +317,59 @@ INSERT INTO Utente(mail, nome, cognome, password, telefono) VALUES
 ('laura@gmail.com','Laura','Milanesi','possword','0321654987'),
 ('ste@gmail.com','Stefano','Mura','pussword','7410852096'),
 ('m4att@gmail.com','Matteo','Torre','teoPazzo' ,'7539518426'),
-('nanna@gmail.com','Anna','Battois','agnello'),
-('bea00@gmail.com','Beatrice','Lachin','traditrice'),
-('dany@gmail.com','Daniele','Vannuccini','agagag4'),
+('nanna@gmail.com','Anna','Battois','agnello','3218529010'),
+('bea00@gmail.com','Beatrice','Lachin','traditrice','0235819843'),
+('dany@gmail.com','Daniele','Vannuccini','agagag4','4274910633'),
 ('imlis@gmail.com','Lisa','De Grandis','NeVeR','1749800286');
 
-INSERT INTO Indirizzo(ID, utente, via, N_civico, CAP, citta, stato) VALUES --aggiungere tuple
+INSERT INTO Indirizzo(ID, utente, via, N_civico, CAP, citta, stato) VALUES
 ('1', 'kev@gmail.com','via Milano','45','30100','Mestre','Italy'),
-('2', 'dav0@gmail.com','via G. Favretto','40','30174','Zelarino','Italy');
+('2', 'dav0@gmail.com','via G. Favretto','40','30174','Zelarino','Italy'),
+('3', 'and99@gmail.com','via Flaminia','23','30020','Roma','Italy'),
+('4', 'laura@gmail.com','via Olimpia','15','30400','Parma','Italy'),
+('5', 'ste@gmail.com','via Regina','6','36000','Terni','Italy'),
+('6', 'm4att@gmail.com','via Roma','31','32400','Rimini','Italy'),
+('7', 'nanna@gmail.com','via Baffo','17','35146','Napoli','Italy'),
+('8', 'bea00@gmail.com','via Aldo Moro','9','30505','Portogruaro','Italy'),
+('9', 'dany@gmail.com','via Eremitani','36','35120','Salerno','Italy'),
+('10', 'imlis@gmail.com','via Patriarcato','20','37090','Cosenza','Italy');
 
-INSERT INTO Carta_di_credito(numero, circuito, scadenza, intestatario) VALUES --aggiungere tuple
+INSERT INTO Carta_di_credito(numero, circuito, scadenza, intestatario) VALUES
 ('0123456789876543','visa','2023-12-30','Kevin Gallo'),
-('9876543210123456','visa','2024-04-15','Davide Bertolin');
-
-INSERT INTO Possesso(utente, carta) VALUES -- aggiungere tuple
+('9876543210123456','visa','2024-04-15','Davide Bertolin'),
+('9076713987942413','mastercard','2022-08-13','Andrea Barozzi'),
+('9483291033195678','diners','2029-11-22','Laura Milanesi'),
+('2398841864610034','visa','2022-05-31','Stefano Mura'),
+('3485433195387321','americanexpress','2025-01-16','Matteo Torre'),
+('9146825457012753','visa','2020-10-20','Anna Battois'),
+('9316783593274965','diners','2024-03-25','Beatrice Lachin'),
+('0422836895312649','americanexpress','2021-07-19','Daniele Vannuccini'),
+('1457895237965312','mastercard','2026-08-21','Lisa De Grandis');
+    
+INSERT INTO Possesso(utente, carta) VALUES
 ('kev@gmail.com','0123456789876543'),
-('dav0@gmail.com','9876543210123456');
+('dav0@gmail.com','9876543210123456'),
+('and99@gmail.com','9076713987942413'),
+('laura@gmail.com','9483291033195678'),
+('ste@gmail.com','2398841864610034'),
+('m4att@gmail.com','3485433195387321'),
+('nanna@gmail.com','9146825457012753'),
+('bea00@gmail.com','9316783593274965'),
+('dany@gmail.com','0422836895312649'),
+('imlis@gmail.com','1457895237965312');
 
-INSERT INTO Ordine(ID, importo, dataPagamento, indirizzo, carta, utente) VALUES --completare tuple
-('1','7.96','2014-11-30','','','m4att@gmail.com',),
+INSERT INTO Ordine(ID, importo, dataPagamento, indirizzo, carta, utente) VALUES
+('1','7.96','2014-11-30','6','3485433195387321','m4att@gmail.com',),
 ('2','59.98','2014-11-30','2','9876543210123456','dav0@gmail.com'),
 ('3','29.99','2014-12-21','2','9876543210123456','dav0@gmail.com'),
 ('4','83.94','2015-04-16','1','0123456789876543','kev@gmail.com'),
-('5','39.98','2016-08-26','','','imlis@gmail.com'),
-('6','84.97','2016-11-30','','','ste@gmail.com'),
-('7','15.99','2017-04-19','','','m4att@gmail.com'),
-('8','149.95','2018-12-25','','','laura@gmail.com'),
+('5','39.98','2016-08-26','10','1457895237965312','imlis@gmail.com'),
+('6','84.97','2016-11-30','5','2398841864610034','ste@gmail.com'),
+('7','15.99','2017-04-19','6','3485433195387321','m4att@gmail.com'),
+('8','149.95','2018-12-25','4','9483291033195678','laura@gmail.com'),
 ('9','119.96','2020-09-22','2','9876543210123456','dav0@gmail.com'),
-('10','89.97','2020-11-17','','','dany@gmail.com'),
-('11','89.97','2021-12-08','','','m4att@gmail.com'),
+('10','89.97','2020-11-17','9','0422836895312649','dany@gmail.com'),
+('11','89.97','2021-12-08','6','3485433195387321','m4att@gmail.com'),
 ('12','54.98','2021-12-25','1','0123456789876543','kev@gmail.com');
 
 INSERT INTO Accessorio(ID, nome, tipo, prezzo, colore, materiale, tema) VALUES
