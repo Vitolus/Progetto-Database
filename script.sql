@@ -929,18 +929,58 @@ DROP INDEX IF EXISTS idx_Personaggio;
 CREATE INDEX idx_Personaggio ON Personaggio (id, razza, classe, utente);
 END;
 /*
-Query 1
+--Query 1
 SELECT Utente.nome, Utente.cognome, SUM(Ordine.importo) AS spesa_totale
 FROM Utente
 JOIN Ordine ON (Ordine.utente=Utente.mail)
 GROUP BY Utente.nome, Utente.cognome
 ORDER BY spesa_totale DESC;
 
-Query 2
+--Query 2
 SELECT Utente.nome, Utente.cognome,
 Personaggio.nome AS personaggio,Personaggio.classe
 FROM Utente
 JOIN Personaggio ON (Personaggio.utente=Utente.mail)
 JOIN Classe ON (Personaggio.classe=Classe.nome)
 WHERE (origine='marziale');
+
+--Query 3
+SELECT Classe.nome, COUNT(Magia.incantesimo) AS N_incantesimi
+FROM Classe
+JOIN Magia ON (Classe.nome=Magia.classe)
+GROUP BY Classe.nome
+HAVING (Classe.origine='arcana')
+ORDER BY N_incantesimi DESC;
+
+--Query 4
+SELECT Personaggio.classe, ROUND(AVG(Personaggio.livello),0) AS livello_medio
+FROM Personaggio
+JOIN Razza ON (Personaggio.razza=Razza.nome)
+WHERE ((Razza.taglia='media'))
+GROUP BY Personaggio.classe
+ORDER BY livello_medio;
+
+--Query5
+DROP VIEW IF EXISTS Manuale;
+CREATE VIEW Manuale AS
+SELECT Avventura.nome, Avventura.dataPubblicazione
+FROM Avventura
+WHERE (dataPubblicazione<='2020-01-01')
+UNION
+SELECT Regolamento.nome, Regolamento.dataPubblicazione
+FROM Regolamento
+WHERE (dataPubblicazione<='2020-01-01');
+
+SELECT Utente.nome, Utente.cognome, COUNT(OrdineM.manuale) AS manuali_acquistati
+FROM Utente
+JOIN Ordine ON (Utente.mail=Ordine.utente)
+JOIN(
+	SELECT ordine, avventura AS manuale
+	FROM OrdineT
+	UNION 
+	SELECT ordine, regolamento AS manuale
+	FROM OrdineR
+	ORDER BY ordine) AS OrdineM ON (Ordine.ID=OrdineM.ordine)
+JOIN Manuale ON (Manuale.nome=OrdineM.manuale)
+GROUP BY Utente.nome, Utente.cognome;
 */
