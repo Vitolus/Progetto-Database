@@ -928,3 +928,11 @@ CREATE INDEX idx_Utente ON Utente(mail);
 DROP INDEX IF EXISTS idx_Personaggio;
 CREATE INDEX idx_Personaggio ON Personaggio (id, razza, classe, utente);
 END;
+/*
+Query 1
+SELECT Utente.nome, Utente.cognome, SUM(Ordine.importo) AS spesa_totale
+FROM Utente
+JOIN Ordine ON (Ordine.utente=Utente.mail)
+GROUP BY Utente.nome, Utente.cognome
+ORDER BY spesa_totale DESC;
+*/
