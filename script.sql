@@ -935,4 +935,12 @@ FROM Utente
 JOIN Ordine ON (Ordine.utente=Utente.mail)
 GROUP BY Utente.nome, Utente.cognome
 ORDER BY spesa_totale DESC;
+
+Query 2
+SELECT Utente.nome, Utente.cognome,
+Personaggio.nome AS personaggio,Personaggio.classe
+FROM Utente
+JOIN Personaggio ON (Personaggio.utente=Utente.mail)
+JOIN Classe ON (Personaggio.classe=Classe.nome)
+WHERE (origine='marziale');
 */
