@@ -928,15 +928,16 @@ CREATE INDEX idx_Utente ON Utente(mail);
 DROP INDEX IF EXISTS idx_Personaggio;
 CREATE INDEX idx_Personaggio ON Personaggio (id, razza, classe, utente);
 END;
-/*
---Query 1
+
+-- Query :
+-- Stampare quanto ogni utente ha speso fino a quel momento, sommando tutti i suoi ordini effettuati
 SELECT Utente.nome, Utente.cognome, SUM(Ordine.importo) AS spesa_totale
 FROM Utente
 JOIN Ordine ON (Ordine.utente=Utente.mail)
 GROUP BY Utente.nome, Utente.cognome
 ORDER BY spesa_totale DESC;
 
---Query 2
+-- Visualizzare quanli utenti hanno creato dei personaggi con delle classi marziali
 SELECT Utente.nome, Utente.cognome,
 Personaggio.nome AS personaggio,Personaggio.classe
 FROM Utente
@@ -944,7 +945,7 @@ JOIN Personaggio ON (Personaggio.utente=Utente.mail)
 JOIN Classe ON (Personaggio.classe=Classe.nome)
 WHERE (origine='marziale');
 
---Query 3
+-- Visualizzare per ogni classe di origini arcane quali incantesimi conosce
 SELECT Classe.nome, COUNT(Magia.incantesimo) AS N_incantesimi
 FROM Classe
 JOIN Magia ON (Classe.nome=Magia.classe)
@@ -952,7 +953,7 @@ GROUP BY Classe.nome
 HAVING (Classe.origine='arcana')
 ORDER BY N_incantesimi DESC;
 
---Query 4
+-- Stampare il livello medio dei personaggi di una certa razza di taglia media, raggruppandoli per classi
 SELECT Personaggio.classe, ROUND(AVG(Personaggio.livello),0) AS livello_medio
 FROM Personaggio
 JOIN Razza ON (Personaggio.razza=Razza.nome)
@@ -960,7 +961,7 @@ WHERE ((Razza.taglia='media'))
 GROUP BY Personaggio.classe
 ORDER BY livello_medio;
 
---Query5
+-- Visualizzare quanti manuali ogni utente ha acquistato tra quelli usciti prima del 2020
 DROP VIEW IF EXISTS Manuale;
 CREATE VIEW Manuale AS
 SELECT Avventura.nome, Avventura.dataPubblicazione
@@ -983,4 +984,3 @@ JOIN(
 	ORDER BY ordine) AS OrdineM ON (Ordine.ID=OrdineM.ordine)
 JOIN Manuale ON (Manuale.nome=OrdineM.manuale)
 GROUP BY Utente.nome, Utente.cognome;
-*/
