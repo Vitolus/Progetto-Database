@@ -1,5 +1,5 @@
 #include <iostream>
-#include <libpq-fe.h> //modificare all' occorrenza
+#include <libpq-fe.h>
 
 void do_exit(PGconn* conn){
     PQfinish(conn);
@@ -69,7 +69,7 @@ void eseguiQuery(PGconn* conn){
 }
 
 int main() {
-    //modificare all' occorrenza
+   
     PGconn* conn= PQconnectdb("");//dati database
     if(PQstatus(conn) == CONNECTION_BAD) {
         std::cout << "Errore di connessione: " << PQerrorMessage(conn) << std::endl;
